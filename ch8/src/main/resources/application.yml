@@ -1,0 +1,37 @@
+
+spring:
+  main:
+    banner-mode: 'off'
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: yudo_gb_bj
+        hbm2ddl:
+          auto: Ignoring
+    hibernate:
+      ddl-auto: create
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/test?currentSchema=yudo_gb_bj
+    username: postgres
+    password: 123456
+    testWhileIdle: true
+    validationQuery: SELECT 1
+
+jedis-config:
+   pool:
+     max-wait: -1
+     max-total: -1
+     min-idle: 8
+     max-idle: 0
+     max-active: 8
+   cluster:
+     connection-timeout: 3000
+     so-timeout: 1000
+     max-redirections: 5
+     nodes: 127.0.0.1:6379
